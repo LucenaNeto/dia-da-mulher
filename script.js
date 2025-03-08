@@ -16,6 +16,24 @@ restartMusic.addEventListener('click', () => {
     audio.play();
 });
 
+// data de início do relacionamento
+const dataInicio = new Date(2020, 2, 29); // 
+
+function atualizarTimer() {
+    const agora = new Date();
+    const diferenca = agora - dataInicio; // Diferença em milissegundos
+
+    // Converter a diferença para dias, horas, minutos e segundos
+    const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+    const horas = Math.floor((diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
+    const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
+
+    // Atualizar o texto do timer
+    document.getElementById('tempoJuntos').textContent =
+        `${dias} dias, ${horas} horas, ${minutos} minutos e ${segundos} segundos`;
+}
+
 playMusic.addEventListener('click', () => {
     if (audio.paused) {
         audio.play();
